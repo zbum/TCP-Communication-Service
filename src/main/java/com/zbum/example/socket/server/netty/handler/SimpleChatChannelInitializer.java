@@ -48,15 +48,6 @@ public class SimpleChatChannelInitializer extends ChannelInitializer<SocketChann
         ChannelPipeline pipeline = socketChannel.pipeline();
 
         // Add the text line codec combination first,
-        pipeline.addLast(new HAProxyMessageDecoder());
-        pipeline.addLast(new SimpleChannelInboundHandler<HAProxyMessage>() {
-            @Override
-            protected void channelRead0(ChannelHandlerContext ctx, HAProxyMessage haProxyMessage) throws Exception {
-                System.out.println("Received HAProxy message: " + haProxyMessage.sourceAddress());
-                System.out.println("Received HAProxy message: " + haProxyMessage.sourcePort());
-            }
-        });
-
         pipeline.addLast(new DelimiterBasedFrameDecoder(1024 * 1024, Delimiters.lineDelimiter()));
 
         pipeline.addLast(stringDecoder);
