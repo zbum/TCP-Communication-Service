@@ -15,13 +15,13 @@
  */
 package com.zbum.example.socket.server.config;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  * Netty ConfigurationProperties
@@ -33,7 +33,7 @@ import javax.validation.constraints.Size;
 @ConfigurationProperties(prefix = "netty")
 public class NettyProperties {
     @NotNull
-    @Size(min=1000, max=65535)
+    @Size(min = 1000, max = 65535)
     private int tcpPort;
 
     @NotNull
