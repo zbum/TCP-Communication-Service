@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 import java.net.InetSocketAddress;
 
 

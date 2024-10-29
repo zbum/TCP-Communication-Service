@@ -18,9 +18,9 @@ package com.zbum.example.socket.server.netty.handler;
 import com.zbum.example.socket.server.domain.ChannelRepository;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.net.SocketAddress;
 
@@ -42,8 +42,8 @@ public class SimpleChatServerHandlerTest {
 
     private SocketAddress remoteAddress;
 
-    @Before
-    public void setUp() {
+    @BeforeEach
+    void setUp() {
         somethingServerHandler = new SimpleChatServerHandler(new ChannelRepository());
 
         channelHandlerContext = mock(ChannelHandlerContext.class);
@@ -51,26 +51,26 @@ public class SimpleChatServerHandlerTest {
         remoteAddress = mock(SocketAddress.class);
     }
 
-    @After
-    public void tearDown() {
+    @AfterEach
+    void tearDown() {
 
     }
 
     @Test
-    public void testChannelActive() throws Exception {
+    void testChannelActive() throws Exception {
         when(channelHandlerContext.channel()).thenReturn(channel);
         when(channelHandlerContext.channel().remoteAddress()).thenReturn(remoteAddress);
         somethingServerHandler.channelActive(channelHandlerContext);
     }
 
     @Test
-    public void testChannelRead() {
+    void testChannelRead() {
         when(channelHandlerContext.channel()).thenReturn(channel);
         somethingServerHandler.channelRead(channelHandlerContext, "test message");
     }
 
     @Test
-    public void testExceptionCaught() {
+    void testExceptionCaught() {
 
     }
 }

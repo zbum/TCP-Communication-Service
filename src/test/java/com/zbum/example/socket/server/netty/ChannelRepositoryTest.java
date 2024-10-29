@@ -17,11 +17,11 @@ package com.zbum.example.socket.server.netty;
 
 import com.zbum.example.socket.server.domain.ChannelRepository;
 import io.netty.channel.embedded.EmbeddedChannel;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 
 /**
  * Test for  ChannelRepository.java
@@ -33,14 +33,14 @@ public class ChannelRepositoryTest {
     private ChannelRepository channelRepository = new ChannelRepository();
 
     @Test
-    public void put() {
+    void put() {
         EmbeddedChannel embeddedChannel = new EmbeddedChannel();
         channelRepository.put("aaa", embeddedChannel);
         assertThat(channelRepository.get("aaa"), is(embeddedChannel));
     }
 
     @Test
-    public void remove() {
+    void remove() {
         EmbeddedChannel embeddedChannel = new EmbeddedChannel();
         channelRepository.put("aaa", embeddedChannel);
         channelRepository.remove("aaa");
@@ -48,7 +48,7 @@ public class ChannelRepositoryTest {
     }
 
     @Test
-    public void size() {
+    void size() {
         EmbeddedChannel embeddedChannel = new EmbeddedChannel();
         channelRepository.put("aaa", embeddedChannel);
         channelRepository.remove("aaa");
